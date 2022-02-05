@@ -1,10 +1,11 @@
-About Vissage Nuker
-https://media.discordapp.net/attachments/936014036267597895/939561288558850048/unknown.png?width=742&height=381
+``About Vissage Nuker``
+![image](https://user-images.githubusercontent.com/94723553/152650598-459c438c-2313-4ec2-9d07-84f1e82d6b21.png)
+
 
 Vissage Nuker is multifunctional and feature-rich bot for destroying discord servers
 
 
-Features:
+**Features:**
   Nuke Server
   Ban Everyone
   Kick Everyone
@@ -22,21 +23,21 @@ Features:
   And some more features
  
 
-How to create bot account:
+**How to create bot account:**
   Make sure you're logged on to the Discord website.
   Navigate to the application page.
   Click on the "New Application" button.
   Give the application a name and click "Create".
   Create a Bot User by navigating to the "Bot" tab and clicking "Add Bot".
   Click "Yes, do it!" to continue. 
-  If you want others to be able to invite your bot tick the Public Bot. Keeping it unticked will prevent others from inviting your bot to their servers and only you will be able to add the bot to servers (provided that you have needed permissions in the server you want to add the bot to).
+  If you want others to be able to invite your bot tick the Public Bot. Keeping it unticked will prevent others from inviting your bot to their servers and only you will be able   to add the bot to servers (provided that you have needed permissions in the server you want to add the bot to).
   Make sure Require OAuth2 Code Grant is unchecked.
   Copy the token using the "Copy" button.
 
 
 
 
-Bot token
+**Bot token**
    Prefix
    Owner's discord ID
    Next times bot will run immediately.
