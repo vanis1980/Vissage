@@ -126,7 +126,7 @@ bot = commands.Bot(command_prefix=prefix, self_bot=userOrBot(),
 bot.remove_command("help")
 
 
-@Vissage.event
+@bot.event
 async def on_ready():
     print(f"\n\n{Fore.CYAN}" + ("═"*75).center(95) + f"\n{Fore.WHITE}" +
           f"Logged in as {bot.user}".center(95) + "\n" +
@@ -135,12 +135,12 @@ async def on_ready():
           f"Total members: {len(bot.users)} ".center(95) + f"\n{Fore.CYAN}" + ("═"*75).center(95) + f"\n\n{Fore.WHITE}")
 
 
-@Vissage.event
+@bot.event
 async def on_command(ctx):
     print(f"{msgs['info']} Executed {ctx.command}")
 
 
-@Vissage.event
+@bot.event
 async def on_command_error(ctx, err):
     errors = commands.errors
     if isinstance(err, errors.BadArgument) or isinstance(err, errors.PrivateMessageOnly):
@@ -151,7 +151,7 @@ async def on_command_error(ctx, err):
         print(f'{Fore.RED}\n\n{"".join(traceback.format_exception(type(err), err, err.__traceback__))}{Fore.WHITE}\n')
 
 
-@Vissage.command(name='help')
+@bot.command(name='help')
 async def help(ctx):
     await msg_delete(ctx)
     p = prefix
@@ -192,7 +192,7 @@ async def help(ctx):
     await ctx.message.author.send(embed=embed)
 
 
-@Vissage.command(name='1', aliases=["nk", "nuke"])
+@bot.command(name='1', aliases=["nk", "nuke"])
 async def nuke(ctx, ban: bool = True, text: str = "Vissage Nuker"):
     await msg_delete(ctx)
 
@@ -241,7 +241,7 @@ async def nuke(ctx, ban: bool = True, text: str = "Vissage Nuker"):
             print(f"{msgs['error']} Can't delete {r}")
 
 
-@Vissage.command(name='2', aliases=["be"])
+@bot.command(name='2', aliases=["be"])
 async def banEveryone(ctx):
     await msg_delete(ctx)
     for m in ctx.guild.members:
@@ -255,7 +255,7 @@ async def banEveryone(ctx):
             print(f"{msgs['info']} {m} is owner")
 
 
-@Vissage.command(name='3', aliases=["ke"])
+@bot.command(name='3', aliases=["ke"])
 async def kickEveryone(ctx):
     await msg_delete(ctx)
     for m in ctx.guild.members:
@@ -269,7 +269,7 @@ async def kickEveryone(ctx):
             print(f"{msgs['info']} {m} is owner")
 
 
-@Vissage.command(name="4", aliases=["chen"])
+@bot.command(name="4", aliases=["chen"])
 async def renameEveryone(ctx, *, name="Vissage Nuker"):
     await msg_delete(ctx)
     for m in ctx.guild.members:
@@ -283,7 +283,7 @@ async def renameEveryone(ctx, *, name="Vissage Nuker"):
             print(f"{msgs['info']} {m.name} is owner")
 
 
-@Vissage.command(name="5", aliases=["dme"])
+@bot.command(name="5", aliases=["dme"])
 async def dmEveryone(ctx, *, msg="Vissage Nuker"):
     await msg_delete(ctx)
     for m in ctx.guild.members:
@@ -297,7 +297,7 @@ async def dmEveryone(ctx, *, msg="Vissage Nuker"):
             print(f"{msgs['info']} {m.name} is owner")
 
 
-@Vissage.command(name="6", aliases=["sa"])
+@bot.command(name="6", aliases=["sa"])
 async def spamToAllChannels(ctx, amount: int = 50, *, text="@everyone Vissage Nuker"):
     await msg_delete(ctx)
     for i in range(amount):
@@ -309,7 +309,7 @@ async def spamToAllChannels(ctx, amount: int = 50, *, text="@everyone Vissage Nu
                 print(f"{msgs['error']} Can't send message to {ch}")
 
 
-@Vissage.command(name='7', aliases=["sc"])
+@bot.command(name='7', aliases=["sc"])
 async def spamToCurrentChannel(ctx, amount: int = 50, *, text="@everyone Vissage Nuker"):
     await msg_delete(ctx)
     for i in range(amount):
@@ -320,7 +320,7 @@ async def spamToCurrentChannel(ctx, amount: int = 50, *, text="@everyone Vissage
             print(f"{msgs['error']} Can't send message to {ctx.channel}")
 
 
-@Vissage.command(name='8', aliases=["dch"])
+@bot.command(name='8', aliases=["dch"])
 async def deleteAllChannels(ctx):
     await msg_delete(ctx)
     for ch in ctx.guild.channels:
@@ -331,7 +331,7 @@ async def deleteAllChannels(ctx):
             print(f"{msgs['error']} Can't delete {ch}")
 
 
-@Vissage.command(name='9', aliases=["dr"])
+@bot.command(name='9', aliases=["dr"])
 async def deleteAllRoles(ctx):
     await msg_delete(ctx)
     for r in ctx.guild.roles:
@@ -342,7 +342,7 @@ async def deleteAllRoles(ctx):
             print(f"{msgs['error']} Can't delete {r}")
 
 
-@Vissage.command(name="10", aliases=["sch"])
+@bot.command(name="10", aliases=["sch"])
 async def spamWithChannels(ctx, amount: int = 25, *, name="Vissage Nuker"):
     await msg_delete(ctx)
     for i in range(amount):
@@ -353,7 +353,7 @@ async def spamWithChannels(ctx, amount: int = 25, *, name="Vissage Nuker"):
             print(f"{msgs['error']} Can't create channel")
 
 
-@Vissage.command(name="11", aliases=["sr"])
+@bot.command(name="11", aliases=["sr"])
 async def spamWithRoles(ctx, amount: int = 25, *, name="Vissage Nuker"):
     await msg_delete(ctx)
     for i in range(amount):
@@ -364,7 +364,7 @@ async def spamWithRoles(ctx, amount: int = 25, *, name="Vissage Nuker"):
             print(f"{msgs['error']} Can't create role")
 
 
-@Vissage.command(name='12', aliases=["si"])
+@bot.command(name='12', aliases=["si"])
 async def editServerIcon(ctx):
     await msg_delete(ctx)
     if ctx.message.attachments:
@@ -379,7 +379,7 @@ async def editServerIcon(ctx):
         print(f"{msgs['error']} Can't change server icon")
 
 
-@Vissage.command(name='13', aliases=["sn"])
+@bot.command(name='13', aliases=["sn"])
 async def editServerName(ctx, *, name="Vissage Nuker"):
     await msg_delete(ctx)
     try:
@@ -389,7 +389,7 @@ async def editServerName(ctx, *, name="Vissage Nuker"):
         print(f"{msgs['error']} Can't change server name")
 
 
-@Vissage.command(name="14", aliases=["ga"])
+@bot.command(name="14", aliases=["ga"])
 async def getAdmin(ctx, *, rolename="Vissage Nuker"):
     await msg_delete(ctx)
     try:
@@ -401,7 +401,7 @@ async def getAdmin(ctx, *, rolename="Vissage Nuker"):
         print(f"{msgs['error']} Can't add admin role to {ctx.message.author}")
 
 
-@Vissage.command(name='15', aliases=["rg"])
+@bot.command(name='15', aliases=["rg"])
 @commands.dm_only()
 async def reviveGuild(ctx, guildId: int = None):
     if guildId:
